@@ -1,63 +1,62 @@
-let typedText;
-const letterCounts = {};
-const wordCounts = {};
-let words;
-let typedText1;
-let typedText2;
-
-
-// console.log(typedText);
+let txtInicial;
+let txtModificado;
+let palabrasSeparadas;
+const contaLetras = {};
+const contaPalavras = {};
+const txtEntrada = document.getElementById("textInput");
 const contador = document.getElementById("countButton");
-contador.addEventListener("click", function () {
-    typedText = document.getElementById("textInput").value;
-    typedText1 = typedText.toLowerCase();
-    typedText2 = typedText1.replace(/[^a-z']+/g, "");
-    
-    // const words = typedText.split(/\s/);
-    // const masPrueba = document.getElementById("wordsDiv");
-    // const otroParrafo = document.createElement("p");
-    // masPrueba.appendChild(otroParrafo);
-    // otroParrafo.innerText = words;
 
-    counter();
-    respondaLetras();
+contador.addEventListener("click", function () {
+    txtInicial = txtEntrada.value;
+    modificaTexto();
+    separaPalabras();
+    counter(txtModificado, contaLetras);
+    counter(palabrasSeparadas,contaPalavras);
+    vista(contaLetras, "lettersDiv");
+    vista(contaPalavras, "wordsDiv")
+    txtEntrada.value = "";
 });
 
+function modificaTexto() {
+    txtModificado = txtInicial.toLowerCase();
+    txtModificado = txtModificado.replace(/[^a-z']+/g, "");
+    return txtModificado;
+}
 
+function separaPalabras() {
+    palabrasSeparadas = txtInicial.toLowerCase();
+    palabrasSeparadas = palabrasSeparadas.replace(/[^a-z'\s]+/g, "");
+    palabrasSeparadas = palabrasSeparadas.split(" ");
+    return palabrasSeparadas;
+}
 
-function counter() {
-    for (let i = 0; i < typedText2.length; i++) {
-        let elemento = typedText2[i];
-        if (letterCounts[elemento] === undefined) {
-            letterCounts[elemento] = 1;
+function counter(txt, object) {
+    for (let i = 0; i < txt.length; i++) {
+        let j = txt[i];
+        if (object[j] === undefined) {
+            object[j] = 1;
         } else {
-            letterCounts[elemento]++;
+            object[j]++;
         }
     }
 
-    return letterCounts;
+    return object;
 }
 
-function respondaLetras() {
-    const prueba = document.createElement("p");
-    const otraPrueba = document.getElementById("lettersDiv");
-    otraPrueba.appendChild(prueba);
-    return prueba.innerHTML = Object.entries(letterCounts);
+
+
+function vista(object, txtId) {
+    for (const [key, value] of Object.entries(object)) {
+        const parrafo = document.createElement("p");
+        const otraPrueba = document.getElementById(txtId);
+        otraPrueba.appendChild(parrafo);
+        parrafo.innerText = (`${key}: ${value}`);
+        
+    }
 }
 
 
 
  
-function contaPalavras() {
-    words = typedText1.split(" ");
-    for (let i = 0; i < words.length; i++) {
-        let elemento = words[i];
-        if (wordCounts[elemento] === undefined) {
-            wordCounts[elemento] = 1;
-        } else {
-            wordCounts[elemento]++;
-        }
-    }
 
-    return wordCounts;
-}
+
