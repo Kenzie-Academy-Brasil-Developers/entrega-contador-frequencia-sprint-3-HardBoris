@@ -78,3 +78,21 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+@media (min-width: 801px) {
+    main {
+        width: 80%;
+        max-width: 1200px;
+    }
+
+    .respuesta {
+        width: 45%;
+        height: 90%;
+    }
+
+    #answer {
+        width: 90%;
+        flex-direction: row;
+
+    }
+}
