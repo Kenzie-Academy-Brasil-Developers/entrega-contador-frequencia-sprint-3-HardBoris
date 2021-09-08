@@ -1,0 +1,68 @@
+body {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    font-size: 16px;
+    background-color: #aaaacc;
+}
+
+header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    box-sizing: border-box;
+    width: 320px;
+    height: 80vh;
+    margin: auto;
+    background-color: #ddeedd;
+}
+
+.interaccion {
+    box-sizing: border-box;
+    width: 90%;
+    height: 50%;
+    padding: 10px;
+    margin: auto;
+    background-color: #eeeedd;
+    text-align: center;
+}
+
+#textInput {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+#countButton {
+    box-sizing: border-box;
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.respuesta {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50%;
+}
+
+footer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
